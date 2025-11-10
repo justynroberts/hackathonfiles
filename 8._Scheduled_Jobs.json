@@ -1,0 +1,52 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> Allow an existing script to be run via webhook,delegated to a human or scheduled\n\n**Description:**\nThey could include\n- UI (triggered by a person)\n- Incident Triggered\n- Webhook\n- Scheduled\n\nThis contains a sample scheduled Job scheduled to run hourly on weekdays.Use the Schedule tab to modify the cron values:\n(0 60 * ? * MON-FRI)\n\n**Assumptions:**\n\n - RBA with Runner Installed OR Self Hosted (PAOP)\n - Linux Tested\n\n**Documentation:** Not Applicable",
+  "executionEnabled" : true,
+  "group" : "👣 Your First Steps in Automation 👣",
+  "id" : "255c9f0b-4a18-4d1f-bb50-ae23275902e7",
+  "loglevel" : "INFO",
+  "name" : "8. Scheduled Jobs",
+  "nodeFilterEditable" : false,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name: ManCity "
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "runnerSelector" : {
+    "canChange" : true
+  },
+  "schedule" : {
+    "month" : "*",
+    "time" : {
+      "hour" : "*",
+      "minute" : "30",
+      "seconds" : "0"
+    },
+    "weekday" : {
+      "day" : "MON-FRI"
+    },
+    "year" : "*"
+  },
+  "scheduleEnabled" : false,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Regular Scheduled Script",
+      "script" : "# A Sample Script. Could be a security check, patch or regular data movement\n\necho \"Regular Job Run\""
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "tags" : "first_steps,scheduled",
+  "user" : "justyn",
+  "uuid" : "255c9f0b-4a18-4d1f-bb50-ae23275902e7"
+} ]

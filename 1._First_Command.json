@@ -1,0 +1,41 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> Because even the longest journey starts with a single step\n\n**Description:**\nThis job is the most basic you can possibly run :-\nA single step, to run the `whoami` command <br>\n**Assumptions:**\n\n - RBA with Runner Installed OR Self Hosted (PAOP)\n - Linux/Windows compatible\n\n**Documentation:** Not Applicable",
+  "executionEnabled" : true,
+  "group" : "👣 Your First Steps in Automation 👣",
+  "id" : "b8b968d4-8957-4d97-bd53-95f76e7f8881",
+  "loglevel" : "INFO",
+  "name" : "1. First Command",
+  "nodeFilterEditable" : false,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name: Chelsea "
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "runnerSelector" : {
+    "runnerFilterMode" : "LOCAL",
+    "runnerFilterType" : "LOCAL_RUNNER"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Run a single command",
+      "exec" : "whoami"
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "tags" : "first_steps",
+  "user" : "justyn",
+  "uuid" : "b8b968d4-8957-4d97-bd53-95f76e7f8881"
+} ]

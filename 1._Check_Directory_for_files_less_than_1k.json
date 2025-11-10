@@ -1,0 +1,30 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> Sample copied from the Command",
+  "executionEnabled" : true,
+  "group" : "👩🏻‍🎓 Today's Workshop 👨🏻‍🎓",
+  "id" : "0052d0c7-270d-4407-b0ef-7eeb86454019",
+  "loglevel" : "WARN",
+  "name" : "1. Check Directory for files less than 1k",
+  "nodeFilterEditable" : false,
+  "plugins" : {
+    "ExecutionLifecycle" : null
+  },
+  "runnerSelector" : {
+    "filter" : "WORKSHOP",
+    "runnerFilterMode" : "TAGS",
+    "runnerFilterType" : "TAG_FILTER_AND"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "exec" : "find /home/ec2-user/temp -type f -size -100k"
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "tags" : "workshop",
+  "user" : "justyn",
+  "uuid" : "0052d0c7-270d-4407-b0ef-7eeb86454019"
+} ]

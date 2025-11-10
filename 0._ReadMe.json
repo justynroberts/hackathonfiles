@@ -1,0 +1,31 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> All of the exercises in here are part of the Connect Automation Workshop",
+  "executionEnabled" : false,
+  "group" : "👩🏻‍🎓 Today's Workshop 👨🏻‍🎓",
+  "id" : "93d9622a-44b7-425b-9c86-76501bec3911",
+  "loglevel" : "INFO",
+  "name" : "0. ReadMe",
+  "nodeFilterEditable" : false,
+  "plugins" : {
+    "ExecutionLifecycle" : null
+  },
+  "runnerSelector" : {
+    "filter" : "WORKSHOP",
+    "runnerFilterMode" : "TAGS",
+    "runnerFilterType" : "TAG_FILTER_AND"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "description" : "ReadMe",
+      "exec" : "echo \"This is just the Readme. Please follow the course and enjoy the day\""
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "tags" : "workshop",
+  "user" : "justyn",
+  "uuid" : "93d9622a-44b7-425b-9c86-76501bec3911"
+} ]

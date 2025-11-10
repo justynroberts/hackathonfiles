@@ -1,0 +1,30 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> Allow an existing script to be run via webhook,delegated to a human or scheduled\n\n**Description:**\nThe inline script allows a remote deployment and running of a Process Automation hosted file.<br>\nANY script can be used, such as Python,Bash,Ruby etc. But this will demonstrate a bash script<br>\n\nModified from an original example at : [www.tecmint.com/linux-server-health-monitoring-script](www.tecmint.com/linux-server-health-monitoring-script)<br>\n\nThe shebang (#! /bin/bash) eg.at the beginning of the file denotes the executable to use, but this can also be defined at the invocation parameter<br>\n**Assumptions:**\n\n - RBA with Runner Installed OR Self Hosted (PAOP)\n - Linux Tested\n\n**Documentation:** Not Applicable",
+  "executionEnabled" : true,
+  "group" : "👣 Your First Steps in Automation 👣",
+  "id" : "61d38151-c25e-4391-8a28-d2edcd424d39",
+  "loglevel" : "INFO",
+  "name" : "2. Running Inline Scripts",
+  "nodeFilterEditable" : false,
+  "plugins" : {
+    "ExecutionLifecycle" : null
+  },
+  "runnerSelector" : {
+    "runnerFilterMode" : "LOCAL",
+    "runnerFilterType" : "LOCAL_RUNNER"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Bash Inline Script",
+      "script" : "#! /bin/bash\n# unset any variable which system may be using\n\nunset tecreset os architecture kernelrelease internalip externalip nameserver loadaverage\n\nwhile getopts iv name\ndo\n        case $name in\n          i)iopt=1;;\n          v)vopt=1;;\n          *)echo \"Invalid arg\";;\n        esac\ndone\n\nif [[ ! -z $iopt ]]\nthen\n{\nwd=$(pwd)\nbasename \"$(test -L \"$0\" && readlink \"$0\" || echo \"$0\")\" > /tmp/scriptname\nscriptname=$(echo -e -n $wd/ && cat /tmp/scriptname)\nsu -c \"cp $scriptname /usr/bin/monitor\" root && echo \"Congratulations! Script Installed, now run monitor Command\" || echo \"Installation failed\"\n}\nfi\n\nif [[ ! -z $vopt ]]\nthen\n{\necho -e \"tecmint_monitor version 0.1\\nDesigned by Tecmint.com\\nReleased Under Apache 2.0 License\"\n}\nfi\n\nif [[ $# -eq 0 ]]\nthen\n{\n\n\n# Define Variable tecreset\ntecreset=$(tput sgr0)\n\n# Check if connected to Internet or not\nping -c 1 google.com &> /dev/null && echo -e '\\E[32m'\"Internet: $tecreset Connected\" || echo -e '\\E[32m'\"Internet: $tecreset Disconnected\"\n\n# Check OS Type\nos=$(uname -o)\necho -e '\\E[32m'\"Operating System Type :\" $tecreset $os\n\n# Check OS Release Version and Name\ncat /etc/os-release | grep 'NAME\\|VERSION' | grep -v 'VERSION_ID' | grep -v 'PRETTY_NAME' > /tmp/osrelease\necho -n -e '\\E[32m'\"OS Name :\" $tecreset  && cat /tmp/osrelease | grep -v \"VERSION\" | cut -f2 -d\\\"\necho -n -e '\\E[32m'\"OS Version :\" $tecreset && cat /tmp/osrelease | grep -v \"NAME\" | cut -f2 -d\\\"\n\n# Check Architecture\narchitecture=$(uname -m)\necho -e '\\E[32m'\"Architecture :\" $tecreset $architecture\n\n# Check Kernel Release\nkernelrelease=$(uname -r)\necho -e '\\E[32m'\"Kernel Release :\" $tecreset $kernelrelease\n\n# Check hostname\necho -e '\\E[32m'\"Hostname :\" $tecreset $HOSTNAME\n\n# Check Internal IP\ninternalip=$(hostname -I)\necho -e '\\E[32m'\"Internal IP :\" $tecreset $internalip\n\n# Check External IP\nexternalip=$(curl -s ipecho.net/plain;echo)\necho -e '\\E[32m'\"External IP : $tecreset \"$externalip\n\n# Check DNS\nnameservers=$(cat /etc/resolv.conf | sed '1 d' | awk '{print $2}')\necho -e '\\E[32m'\"Name Servers :\" $tecreset $nameservers\n\n# Check Logged In Users\nwho>/tmp/who\necho -e '\\E[32m'\"Logged In users :\" $tecreset && cat /tmp/who\n\n# Check RAM and SWAP Usages\nfree -h | grep -v + > /tmp/ramcache\necho -e '\\E[32m'\"Ram Usages :\" $tecreset\ncat /tmp/ramcache | grep -v \"Swap\"\necho -e '\\E[32m'\"Swap Usages :\" $tecreset\ncat /tmp/ramcache | grep -v \"Mem\"\n\n# Check Disk Usages\ndf -h| grep 'Filesystem\\|/dev/sda*' > /tmp/diskusage\necho -e '\\E[32m'\"Disk Usages :\" $tecreset\ncat /tmp/diskusage\n\n# Check Load Average\nloadaverage=$(top -n 1 -b | grep \"load average:\" | awk '{print $10 $11 $12}')\necho -e '\\E[32m'\"Load Average :\" $tecreset $loadaverage\n\n# Check System Uptime\ntecuptime=$(uptime | awk '{print $3,$4}' | cut -f1 -d,)\necho -e '\\E[32m'\"System Uptime Days/(HH:MM) :\" $tecreset $tecuptime\n\n# Unset Variables\nunset tecreset os architecture kernelrelease internalip externalip nameserver loadaverage\n\n# Remove Temporary Files\nrm /tmp/osrelease /tmp/who /tmp/ramcache /tmp/diskusage\n}\nfi\nshift $(($OPTIND -1))"
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "tags" : "first_steps",
+  "user" : "justyn",
+  "uuid" : "61d38151-c25e-4391-8a28-d2edcd424d39"
+} ]

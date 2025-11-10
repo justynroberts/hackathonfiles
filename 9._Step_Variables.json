@@ -1,0 +1,48 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> Useful Variables you can incorporate into your own projects\n\n<br>**Description:**\nPrints out all job variables\nyou can use these anywhere as ${job.[variable]}\n<br>Frequently used include:\n\n- username\n- id (great for if you need a unique identifier for a temporary file/directory)\n- url\n\n**Assumptions:**\n\n - RBA with Runner Installed OR Self Hosted (PAOP)\n - Linux/Windows compatible\n\n**Documentation:** Not Applicable",
+  "executionEnabled" : true,
+  "group" : "👣 Your First Steps in Automation 👣",
+  "id" : "7bc3596f-9489-4a98-bb2d-1e5b80fe1bea",
+  "loglevel" : "INFO",
+  "name" : "9. Step Variables",
+  "nodeFilterEditable" : false,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name: Fulham "
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "runnerSelector" : {
+    "canChange" : true,
+    "runnerFilterMode" : "LOCAL",
+    "runnerFilterType" : "LOCAL_RUNNER"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "configuration" : {
+        "debugOnly" : "false"
+      },
+      "description" : "Log all Step Variables",
+      "nodeStep" : false,
+      "type" : "log-data-step"
+    }, {
+      "description" : "Echo Username for Job",
+      "exec" : "echo \"Job Ran by \"${job.username}"
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "user" : "justyn",
+  "uuid" : "7bc3596f-9489-4a98-bb2d-1e5b80fe1bea"
+} ]

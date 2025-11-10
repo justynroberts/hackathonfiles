@@ -1,0 +1,65 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "> Using options to grab user input\n\n**Description:**\nOptions are variables in Process Automation<br>\nAn option can be used as user input or passed from as webhook payload<br>\nThis shows a basic example of three options, and how they are referenced in both commands and inline scripts<br>\nThe 3rd option shows a regex example, used to validate input <br>\n\n**Assumptions:**\n\n - RBA with Runner Installed OR Self Hosted (PAOP)\n - Linux Tested\n\n**Documentation:** [Job Options](https://docs.rundeck.com/docs/manual/job-options.html#job-options)\n",
+  "executionEnabled" : true,
+  "group" : "👣 Your First Steps in Automation 👣",
+  "id" : "3c3a7df4-c37b-481e-8045-a64266511804",
+  "loglevel" : "INFO",
+  "name" : "3. Capturing Options",
+  "nodeFilterEditable" : false,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name: Leicester "
+  },
+  "nodesSelectedByDefault" : true,
+  "options" : [ {
+    "description" : "The simple option allows a user to enter free form text into a reusable text variable.\nDefaults can be set easily\n\nThese options can be referenced in commands as\n${option.simple}\n\nor in scripts using  @option.simple@ ",
+    "label" : "Enter Disk Capacity (GB)",
+    "name" : "simple",
+    "value" : "10"
+  }, {
+    "delimiter" : ",",
+    "description" : "Options can be restricted to specific predetermined values.",
+    "enforced" : true,
+    "label" : "List of available installable applications",
+    "multivalued" : true,
+    "name" : "applicationlist",
+    "values" : [ ".Net 5.0", "Docker", "Jupyter", "NodeJS", "Python2.7", "Python3" ],
+    "valuesListDelimiter" : ","
+  }, {
+    "description" : "A validated option ensures the entered value matches a predetermined pattern.\n",
+    "label" : "Users Email address in the format (name@domain.com)",
+    "name" : "validated",
+    "regex" : "^([\\w\\.\\-]+)@([\\w\\-]+)((\\.(\\w){2,3})+)$",
+    "required" : true
+  } ],
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "runnerSelector" : {
+    "runnerFilterMode" : "LOCAL",
+    "runnerFilterType" : "LOCAL_RUNNER"
+  },
+  "scheduleEnabled" : true,
+  "schedules" : [ ],
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Simple Option Input",
+      "exec" : "echo \"You chose \"${option.simple}\"GB Disk space"
+    }, {
+      "description" : "Display all options",
+      "script" : "echo \"Provision the following applications\"\necho \"@option.applicationlist@\"\necho \"with @option.simple@ GB storage\"\necho \"to user with address: @option.validated@\""
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "tags" : "first_steps",
+  "user" : "justyn",
+  "uuid" : "3c3a7df4-c37b-481e-8045-a64266511804"
+} ]
